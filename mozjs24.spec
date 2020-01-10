@@ -1,7 +1,7 @@
 Summary:	JavaScript interpreter and libraries
 Name:		mozjs24
 Version:	24.2.0
-Release:	7%{?dist}
+Release:	6%{?dist}
 License:	MPLv2.0
 Group:		Development/Languages
 URL:		http://www.mozilla.org/js/
@@ -13,7 +13,6 @@ BuildRequires:	/usr/bin/python
 
 Patch0:		js17-build-fixes.patch
 Patch1:		mozjs24-0001-Add-AArch64-support.patch
-Patch2:		mozjs24-48-bit-VA-fix.patch
 
 %description
 JavaScript is the Netscape-developed object scripting language used in millions
@@ -38,7 +37,6 @@ rm js/src/editline -rf
 rm js/src/ctypes/libffi -rf
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 chmod a+x configure
 
 %build
@@ -99,9 +97,6 @@ rm -f %{buildroot}%{_bindir}/js24-config
 %{_includedir}/mozjs-24
 
 %changelog
-* Tue Mar 28 2017 Yaakov Selkowitz <yselkowi@redhat.com> - 24.2.0-7
-- Fix crash with 48-bit VA on aarch64 (#1340183)
-
 * Wed May 27 2015 Martin Stransky <stransky@redhat.com> 24.2.0-6
 - Added generic 64/32 bit check
 
